@@ -24,7 +24,7 @@ class BarChart extends Component {
     height = svg.attr("height") - margin
 
 svg.append("text")
-   .attr("transform", "translate(100,0)")
+   .attr("transform", "translate(80,0)")
    .attr("x", 50)
    .attr("y", 50)
    .attr("font-size", "24px")
