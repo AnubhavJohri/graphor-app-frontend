@@ -78,6 +78,6 @@ var g = svg.append("g")
 
 
    }
-   render() { return <svg width="600" height="500"></svg> }
+   render() { return <svg width="500" height="500"></svg> }
 }
 export default BarChart

@@ -16,6 +16,7 @@ export default class Home extends React.Component {
       json: null,
       link : "" ,
       errorMessage: "",
+      linkErrorMessage : "" ,
       enable : false
     }
     
@@ -24,12 +25,25 @@ export default class Home extends React.Component {
   handleChange = (event) => {
     const name = event.target.name ; 
     const value = event.target.value ;
-    this.setState({ [name] : value })
-    // if ( this.state.link && this.state.files ) 
-    if( this.state.link.length>0 )
-    this.setState( {enable : true} ) ;
-    else if(( this.state.link.length===0 ))
-    this.setState( {enable : false} ) ;
+    this.setState({ [name] : value }) 
+    this.handleValidations( name , value ) ;
+  }
+
+  handleValidations( name , value ) {
+    var errorMessage = "" , enable = false ;
+    if ( value.length === 0 ){
+      errorMessage = "Please enter a link to proceed" ;
+      enable = false ;
+    }
+    else{
+      errorMessage = "" ;
+      enable = true ;
+    }
+    if ( enable )
+    this.setState( {enable : true , linkErrorMessage : errorMessage } ) ;
+    else
+    this.setState( {enable : false , linkErrorMessage : errorMessage } ) ;
+
   }
 
   handleSubmit = ( e ) => {
@@ -44,7 +58,7 @@ export default class Home extends React.Component {
       console.log("json object recieved=", result.data.message);
       let newOb = {} ;
       newOb["jsonOb"] = result.data.message ; 
-      axios.post("https://textor-app-backend.herokuapp.com/service/postjson", newOb).then( r => {
+      axios.post("https://graphor-app-backend.herokuapp.com/service/postjson", newOb).then( r => {
         this.LoadingBar.complete() ;       //STOP LOADING BAR ON RECIEVING SUCCESS MESSAGE
         var data = result.data.message ;
         this.setState({ json: data })
@@ -70,9 +84,6 @@ export default class Home extends React.Component {
 
 
   render() {
-    var data = [1, 1, 2, 3, 5, 8, 13, 21];
-    var arcs = d3.pie()(data);
-    
     return (
       <React.Fragment>
         <div className="container">
@@ -82,12 +93,13 @@ export default class Home extends React.Component {
           <LoadingBar height={7} color='grey' onRef={ref => (this.LoadingBar = ref)}/>
             <div className="col-lg-8 offset-lg-2 col-sm-12 col-md-12  text-center" style={{ backgroundColor: "lightblue" }}>
               <div className="card">
-                <div className="card-title"><h1 className="display-4">Convert JSON Data to Graph</h1></div>
+                <div className="card-title"><h1 className="display-4"><strong>Convert JSON Data to Graph</strong></h1></div>
               </div>
               <div className="card-body">
                 <form autoComplete="off" onSubmit={this.handleSubmit}>
                   <div className="form-group">
                     <input type="link"  onChange={this.handleChange} placeholder="Please Enter link of the json file" name="link" className="form-control" />
+                    <span className = "text-danger"><em>{this.state.linkErrorMessage}</em></span>
                   </div>
 
                   <div style={{ width: "60px", height: "60px", marginLeft: "250px" }} className="text-center" >
