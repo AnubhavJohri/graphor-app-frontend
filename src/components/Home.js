@@ -34,7 +34,7 @@ export default class Home extends React.Component {
 
   handleSubmit = ( e ) => {
     e.preventDefault();
-    //var url = "https://textor-app-backend.herokuapp.com/image/extractImage/";
+    //var url = "https://textor-app-backend.herokuapp.com/service";
     //var url = "http://localhost:3001/service/postjson";
     //var data = [1, 1, 2, 3, 5, 8, 13, 21];
     this.setState({json:null ,errorMessage : ""})
@@ -44,7 +44,7 @@ export default class Home extends React.Component {
       console.log("json object recieved=", result.data.message);
       let newOb = {} ;
       newOb["jsonOb"] = result.data.message ; 
-      axios.post("http://localhost:3001/service/postjson", newOb).then( r => {
+      axios.post("https://textor-app-backend.herokuapp.com/service/postjson", newOb).then( r => {
         this.LoadingBar.complete() ;       //STOP LOADING BAR ON RECIEVING SUCCESS MESSAGE
         var data = result.data.message ;
         this.setState({ json: data })
