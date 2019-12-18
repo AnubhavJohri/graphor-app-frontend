@@ -24,3 +24,19 @@
 .bar {
   fill: steelblue;
 }
+
+line#limit {
+  stroke: #FED966;
+  stroke-width: 3;
+  stroke-dasharray: 3 6;
+}
+
+.grid path {
+  stroke-width: 0.2;
+  stroke-linecap: square;
+}
+
+.grid .tick line {
+  stroke: #9FAAAE;
+  stroke-opacity: 0.2;
+}

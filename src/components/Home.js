@@ -169,7 +169,7 @@ export default class Home extends React.Component {
           <LoadingBar height={7} color='grey' onRef={ref => (this.LoadingBar = ref)}/>
             <div className="col-lg-8 offset-lg-2 col-sm-12 col-md-12  text-center" style={{ backgroundColor: "lightblue" }}>
               <div className="card">
-                <div className="card-title"><h1 className="display-4"><strong>Convert JSON Data to Graph</strong></h1></div>
+                <div className="card-title"><h1 className="display-4" style={{fontFamily: 'Open Sans'}}>Convert JSON Data to Graph</h1></div>
               </div>
               <div className="card-body">
                 <form autoComplete="off" onSubmit={this.handleSubmit}>
