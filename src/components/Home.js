@@ -186,12 +186,12 @@ export default class Home extends React.Component {
                   </div> : <span></span> }
 
                   <div className="form-check-inline">
-                    <label className="form-check-label">JSON Object</label>
                     <input onChange={this.handleChange} className="form-check-input" type="radio" name = "radio" id="radio1" value="1" />
+                    <label className="form-check-label">JSON Object</label>
                   </div>
                   <div className="form-check-inline">
-                    <label className="form-check-label">JSON Object Web Link</label>
                     <input onChange={this.handleChange} className="form-check-input" type="radio" name = "radio" id="radio2" value="2" />
+                    <label className="form-check-label">JSON Object Web Link</label>
                   </div>
 
                   {/* <div className="form-group">
