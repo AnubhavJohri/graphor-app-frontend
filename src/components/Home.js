@@ -181,7 +181,7 @@ export default class Home extends React.Component {
                   : <span></span>}
                   {this.state.enableObjectTA ? 
                   <div className="form-group">
-                      <textarea id="content" value = { this.state.object } name="object" rows="5" onChange={this.handleChange} className="form-control" placeholder="Enter a JSON Object array of type [{'food':'xyz' , 'quantity':20}]"/>
+                      <textarea id="content" value = { this.state.object } name="object" rows="5" onChange={this.handleChange} className="form-control" placeholder="Enter a JSON Object array of type [{'food':'xyz' , 'quantity':20} , { 'food' :... }  ,..]"/>
                       <span className="text-danger"><em>{this.state.objectErrorMessage}</em></span>
                   </div> : <span></span> }
 
