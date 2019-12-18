@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import '../App.css'
-import { max } from 'd3-array'
 import * as d3 from 'd3';
 
 class BarChart extends Component {
@@ -12,11 +11,7 @@ class BarChart extends Component {
       this.createBarChart()
       console.log("barchart.js=",this.props.data);
    }
-   componentDidUpdate() {
-      //this.createBarChart()
-      console.log("barchart.js=",this.props.data);
-      
-   }
+  
    createBarChart() {
       var svg = d3.select("svg"),
     margin = 200,
@@ -35,10 +30,10 @@ var xScale = d3.scaleBand().range([0, width]).padding(0.4),
 
 var g = svg.append("g")
            .attr("transform", "translate(" + 100 + "," + 100 + ")");
-
-    var data = this.props.data ;
+    var data = [] ;
+    data = this.props.data ;
     //var data = [{"food":"Tacos","quantity":15},{"food":"Hotdogs","quantity":24},{"food":"Pizza","quantity":3},{"food":"Cheese Burger","quantity":8} ,{"food":"Sandwiches","quantity":18 }]    
-
+    console.log("data in barchart=",data);    
     xScale.domain(data.map(function(d) { return d.food; }));
     yScale.domain([0, d3.max(data, function(d) { return d.quantity; })]);
 
